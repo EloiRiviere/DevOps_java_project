@@ -81,7 +81,7 @@ public class ClientPanel extends Parent {
         // Bouton d'effacement de zone de saisie
         clearBtn = new Button();
         clearBtn.setLayoutX(470);
-        clearBtn.setLayoutY(380);
+        clearBtn.setLayoutY(385);
         clearBtn.setPrefHeight(25);
         clearBtn.setPrefWidth(100);
         clearBtn.setText("Effacer");
