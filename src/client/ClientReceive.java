@@ -29,7 +29,6 @@ public class ClientReceive extends Thread
     {
         try
         {
-            
             in = new ObjectInputStream(socket.getInputStream());
         }
         catch (IOException ex)

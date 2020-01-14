@@ -4,6 +4,11 @@
     -fx-background: mediumseagreen;
 }
 
+.background
+{
+    -fx-background: mediumseagreen;
+}
+
 .button
 {
     -fx-background-color: mediumseagreen;

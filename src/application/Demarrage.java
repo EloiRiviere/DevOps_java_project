@@ -3,6 +3,7 @@
  */
 package application;
 
+import java.io.IOException;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -19,6 +20,14 @@ public class Demarrage extends Application {
 
     public static void main(String[] args) {
         launch(args);
+        try
+        {
+            Process process = new ProcessBuilder("../client/MainClient.java","25555").start();
+        }
+        catch(IOException e)
+        {
+            System.err.println("Erreur lors du lancement du client.");
+        }
     }
 
     @Override
@@ -28,7 +37,7 @@ public class Demarrage extends Application {
         Group root = new Group();
         root.getChildren().add(clientPanel);
         Scene scene = new Scene(root, 600, 500);
-        //scene.setFill(Color.BLACK);
+        scene.setFill(Color.BLACK);
         stage.setResizable(false);
         stage.setTitle("Application Réseau - Interface");
         scene.getStylesheets().addAll(this.getClass().getResource("style.css").toExternalForm());
