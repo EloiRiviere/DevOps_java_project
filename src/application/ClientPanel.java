@@ -23,6 +23,7 @@ public class ClientPanel extends Parent {
     TextFlow receivedText;
     Button sendBtn;
     Button clearBtn;
+    Button disconnectBtn;
     TextArea connected;
     Text textMembers;
     
@@ -91,12 +92,22 @@ public class ClientPanel extends Parent {
             textToSend.clear();
         });
         
+        // Bouton de déconnexion
+        disconnectBtn = new Button();
+        disconnectBtn.setLayoutX(470);
+        disconnectBtn.setLayoutY(420);
+        disconnectBtn.setPrefHeight(25);
+        disconnectBtn.setPrefWidth(100);
+        disconnectBtn.setText("Quitter");
+        disconnectBtn.setVisible(true);
+        
         this.getChildren().add(connected);
         this.getChildren().add(textMembers);
         this.getChildren().add(scrollReceivedText);
-        this.getChildren().add(textToSend);
-        this.getChildren().add(clearBtn);
+        this.getChildren().add(textToSend);        
         this.getChildren().add(sendBtn);
+        this.getChildren().add(clearBtn);
+        this.getChildren().add(disconnectBtn);
     }
     
 }
