@@ -7,18 +7,18 @@ Le cul de chouette est un jeu découvert dans la série d'Alexandre Astier, Kaam
 Règles trouvées ici : https://lecoindujeu.com/jeu-de-societe/le-cul-de-chouette/
 
 Cas effectifs  :
-    [checkbox:checked] Cul de Chouette
-    [checkbox:checked] Chouette
-    [checkbox:checked] Velute
-    [checkbox:checked] Chouette velute
-    [checkbox:checked] Suite
-    [checkbox:unchecked] Sirotage
-    [checkbox:unchecked] Civet
-    [checkbox:unchecked] Civet siroté
-    [checkbox:unchecked] Néant
-    [checkbox:unchecked] Grelottine
-    [checkbox:unchecked] Bévue
-    [checkbox:unchecked] Doublette
+    :fa-check: Cul de Chouette
+    :fa-check: Chouette
+    :fa-check: Velute
+    :fa-check: Chouette velute
+    :fa-check: Suite
+    :fa-times: Sirotage
+    :fa-times: Civet
+    :fa-times: Civet siroté
+    :fa-times: Néant
+    :fa-times: Grelottine
+    :fa-times: Bévue
+    :fa-times: Doublette
     
 
 ## Projet
