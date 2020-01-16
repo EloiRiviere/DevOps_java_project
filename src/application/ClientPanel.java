@@ -100,6 +100,9 @@ public class ClientPanel extends Parent {
         disconnectBtn.setPrefWidth(100);
         disconnectBtn.setText("Quitter");
         disconnectBtn.setVisible(true);
+        disconnectBtn.setOnAction( e ->{
+            // e.getSource().getScene().stage.close();
+        });
         
         this.getChildren().add(connected);
         this.getChildren().add(textMembers);
