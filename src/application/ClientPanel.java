@@ -12,8 +12,9 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
-import client.ClientSend;
 import common.Message;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -94,12 +95,12 @@ public class ClientPanel extends Parent {
         
         sendBtn.setOnAction((ActionEvent event) -> {
             if(textToSend.getText().length()>0){
-                receivedText.getChildren().add(new Label(textToSend.getText()));
+                receivedText.getChildren().add(new Label("Moi : " + textToSend.getText()));
                 receivedText.getChildren().add(new Text(System.lineSeparator()));
-                textToSend.clear();
                 Message mess = new Message("test", textToSend.getText());
                 try {
                     this.messageSended(mess);
+                    textToSend.clear();
                 } catch (IOException ex) {
                     Logger.getLogger(ClientPanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
