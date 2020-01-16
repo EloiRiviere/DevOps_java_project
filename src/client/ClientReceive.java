@@ -1,5 +1,6 @@
 package client;
 
+import application.ClientPanel;
 import common.Message;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -17,11 +18,13 @@ public class ClientReceive extends Thread
     private final Client client;
     private final Socket socket;
     private ObjectInputStream in;
+    private ClientPanel clientpanel;
     
-    public ClientReceive(Client client, Socket socket)
+    public ClientReceive(Client client, Socket socket, ClientPanel cp)
     {
         this.client = client;
         this.socket = socket;
+        this.clientpanel = cp;
     }
     
     @Override
@@ -48,6 +51,8 @@ public class ClientReceive extends Thread
                     System.out.println("\nMessage reçu  >> " + mess);
                     //this.client.messageReceived(mess);
                     System.out.print("Votre message >> ");
+                    
+                    this.clientpanel.messageReceived(mess);                    
                 }
                 else
                 {

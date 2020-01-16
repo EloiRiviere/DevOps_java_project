@@ -3,6 +3,7 @@
  */
 package application;
 
+import client.Client;
 import javafx.event.ActionEvent;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -11,14 +12,20 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
-
+import client.ClientSend;
+import common.Message;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.application.Platform;
 /**
  * @author Eloi Rivière p1925581
  * @version 1.0
  * @since 2019-12-01
  */
 public class ClientPanel extends Parent {
-    TextArea textToSend;
+
+    TextArea  textToSend;
     ScrollPane scrollReceivedText;
     TextFlow receivedText;
     Button sendBtn;
@@ -26,6 +33,17 @@ public class ClientPanel extends Parent {
     Button disconnectBtn;
     TextArea connected;
     Text textMembers;
+
+    private Client client;
+    
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+    
     
     public ClientPanel()
     {
@@ -75,8 +93,17 @@ public class ClientPanel extends Parent {
         sendBtn.setVisible(true);
         
         sendBtn.setOnAction((ActionEvent event) -> {
-            receivedText.getChildren().add(new Label(textToSend.getText()));
-            textToSend.clear();
+            if(textToSend.getText().length()>0){
+                receivedText.getChildren().add(new Label(textToSend.getText()));
+                receivedText.getChildren().add(new Text(System.lineSeparator()));
+                textToSend.clear();
+                Message mess = new Message("test", textToSend.getText());
+                try {
+                    this.messageSended(mess);
+                } catch (IOException ex) {
+                    Logger.getLogger(ClientPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         });
         
         // Bouton d'effacement de zone de saisie
@@ -111,6 +138,22 @@ public class ClientPanel extends Parent {
         this.getChildren().add(sendBtn);
         this.getChildren().add(clearBtn);
         this.getChildren().add(disconnectBtn);
+    }
+    
+    
+    public void messageReceived(Message mess) {
+        
+        Platform.runLater(new Runnable(){
+            @Override
+            public void run() {
+                receivedText.getChildren().add(new Label(mess.toString()));
+                receivedText.getChildren().add(new Text(System.lineSeparator()));
+            }
+        });
+    }    
+    
+    public void messageSended(Message mess) throws IOException {
+        this.client.send(mess);
     }
     
 }

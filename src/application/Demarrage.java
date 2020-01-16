@@ -3,6 +3,8 @@
  */
 package application;
 
+import client.Client;
+import client.MainClient;
 import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
 import java.io.IOException;
 import javafx.application.Application;
@@ -20,22 +22,26 @@ import server.Server;
  */
 public class Demarrage extends Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         launch(args);
-        try
+        /*try
         {
             Process process = new ProcessBuilder("../client/MainClient.java","25555").start();
         }
         catch(IOException e)
         {
             System.err.println("Erreur lors du lancement du client.");
-        }
+        }*/
     }
 
     @Override
     public void start(Stage stage) throws Exception
     {
+        
         ClientPanel clientPanel = new ClientPanel();
+        
+        Client client = MainClient.customInit("localhost", 25555, clientPanel);
+        clientPanel.setClient(client);
         Group root = new Group();
         root.getChildren().add(clientPanel);
         Scene scene = new Scene(root, 600, 500);
