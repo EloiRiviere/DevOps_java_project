@@ -6,6 +6,8 @@ Le cul de chouette est un jeu découvert dans la série d'Alexandre Astier, Kaam
 
 Règles trouvées ici : https://lecoindujeu.com/jeu-de-societe/le-cul-de-chouette/
 
+Nombre de joueurs : 2
+
 Cas effectifs  :
 
     :V: Cul de Chouette
