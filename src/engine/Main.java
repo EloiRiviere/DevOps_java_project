@@ -27,7 +27,7 @@ public class Main {
     }
     
     public static Triplon calcPoint(List<Integer> liste){
-        Triplon lancer = new Triplon(liste);
+        Triplon lancer = new Triplon();
         lancer.process();
         System.out.println(lancer);
         return lancer;

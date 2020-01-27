@@ -48,10 +48,6 @@ public class ClientReceive extends Thread
                 mess = (Message) in.readObject();
                 if (mess != null)
                 {
-                    System.out.println("\nMessage reçu  >> " + mess);
-                    //this.client.messageReceived(mess);
-                    System.out.print("Votre message >> ");
-                    
                     this.clientpanel.messageReceived(mess);                    
                 }
                 else

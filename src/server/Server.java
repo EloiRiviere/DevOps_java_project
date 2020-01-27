@@ -52,8 +52,6 @@ public class Server {
     {
         discClient.closeClient();
         clients.remove(discClient);
-        String message = "Le client " + discClient.getId() + " s'est déconnecté.";
-        System.out.println(message);
         for(ConnectedClient client : clients)
         {
             client.sendMessage(new Message("server","Le client " + discClient.getId() + " s'est déconnecté."));

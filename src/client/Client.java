@@ -46,10 +46,6 @@ public class Client
         this.out.flush();
     }
 
-    void messageReceived(Message mess) {
-        System.out.println(mess);
-    }
-
     void disconnectedServer() {
         System.out.println("Un client s'est déconnecté.");
     }

@@ -30,7 +30,6 @@ public class ClientSend extends Thread
         Scanner sc = new Scanner(System.in);
         while (true)
         {
-            System.out.print("Votre message >> ");
             String m = sc.nextLine();
             Message mess = new Message("client", m);
             try

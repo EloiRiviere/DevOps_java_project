@@ -5,9 +5,11 @@
  */
 package engine;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 
 /**
  *
@@ -19,8 +21,8 @@ public class Triplon {
     private int points;
     private String type;
 
-    public Triplon(List<Integer> des) {
-        this.des = des;
+    public Triplon() {
+        this.des = lancer();
     }
 
     public List<Integer> getDes() {
@@ -136,6 +138,15 @@ public class Triplon {
     @Override
     public String toString() {
         return "Triplon{" + "des=" + des + ", points=" + points + ", type=" + type + '}';
+    }
+    
+    public static List<Integer> lancer(){
+        List<Integer> lancer = new ArrayList<>();
+        Random r = new Random();
+        lancer.add(r.nextInt(6) + 1);
+        lancer.add(r.nextInt(6) + 1);
+        lancer.add(r.nextInt(6) + 1);
+        return lancer;
     }
 
 }

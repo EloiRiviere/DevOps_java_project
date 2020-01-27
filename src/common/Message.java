@@ -36,5 +36,13 @@ public class Message implements Serializable{
     {
         return content;
     }
+
+    public String getSender() {
+        return sender;
+    }
+
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
     
 }
