@@ -1,0 +1,34 @@
+.root
+{
+    -fx-font-family: "Courier New";
+    -fx-background: mediumseagreen;
+}
+
+.background
+{
+    -fx-background: mediumseagreen;
+}
+
+.button
+{
+    -fx-background-color: mediumseagreen;
+}
+.button:hover
+{
+    -fx-background-color: mediumaquamarine;
+}
+
+.text-area .content
+{
+    -fx-background-color: mediumseagreen ;
+}
+
+.text-area:hover .content
+{
+    -fx-background-color: mediumaquamarine ;
+}
+
+.text-flow .content
+{
+    -fx-background-color: mediumseagreen ;
+}

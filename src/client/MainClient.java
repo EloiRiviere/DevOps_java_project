@@ -1,4 +1,5 @@
 package client;
+import application.ClientPanel;
 import java.io.IOException;
 
 /**
@@ -14,7 +15,7 @@ public class MainClient {
      * @paramargs
      */
     
-    public static void main(String[] args) throws IOException {
+    /*public static void main(String[] args) throws IOException {
         if (args.length != 2)
         {
             printUsage();
@@ -25,6 +26,13 @@ public class MainClient {
             Integer port = new Integer(args[1]);
             Client c = new Client(address, port);
         }
+    }*/
+    
+    public static Client customInit(String add, int p, ClientPanel cp) throws IOException{
+        String address = add;
+        int port = p;
+        Client c = new Client(address, port, cp);
+        return c;
     }
     
     private static void printUsage() {

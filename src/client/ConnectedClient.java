@@ -76,6 +76,7 @@ public class ConnectedClient implements Runnable
         }
         catch(IOException | ClassNotFoundException ex)
         {
+            System.out.println("Test fermeture");
             Logger.getLogger(ConnectedClient.class.getName()).log(Level.SEVERE, null, ex);
         }
         

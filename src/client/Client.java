@@ -1,6 +1,7 @@
 
 package client;
 
+import application.ClientPanel;
 import application.Demarrage;
 import common.Message;
 import java.io.IOException;
@@ -20,23 +21,29 @@ public class Client
     private final Socket socket;
     private ObjectInputStream in;
     private final ObjectOutputStream out;
+    private Thread clientSend;
     
     public static void main(String[] args)
     {
         new application.Demarrage();
     }
     
-    public Client(String address, int port) throws IOException
+    public Client(String address, int port, ClientPanel cp) throws IOException
     {
         this.address = address;
         this.port = port;
         this.socket = new Socket(address, port);
         this.out = new ObjectOutputStream(socket.getOutputStream());
-        Thread clientSend = new ClientSend(socket,out);
+        this.clientSend = new ClientSend(socket,out);
         clientSend.start();
-        Thread clientReceive = new ClientReceive(this, socket);
+        Thread clientReceive = new ClientReceive(this, socket, cp);
         clientReceive.start();
         
+    }
+
+    public void send(Message mess) throws IOException{
+        this.out.writeObject(mess);
+        this.out.flush();
     }
 
     void messageReceived(Message mess) {
