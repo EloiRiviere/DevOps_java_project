@@ -32,6 +32,8 @@ public class ClientPanel extends Parent {
     Button sendBtn;
     Button clearBtn;
     Button disconnectBtn;
+    Button grelotteBtn;
+    Button caillouBtn;
     TextArea connected;
     Text textMembers;
 
@@ -59,23 +61,10 @@ public class ClientPanel extends Parent {
         scrollReceivedText.setLayoutX(50);
         scrollReceivedText.setLayoutY(50);
         scrollReceivedText.setPrefHeight(280);
-        scrollReceivedText.setPrefWidth(400);
+        scrollReceivedText.setPrefWidth(520);
         
         scrollReceivedText.setContent(receivedText);
         scrollReceivedText.vvalueProperty().bind(receivedText.heightProperty());
-        
-        // Label des clients connectés
-        textMembers = new Text("Connectés:");
-        textMembers.setLayoutX(470);
-        textMembers.setLayoutY(0);
-        
-        // Zone des clients connectés
-        connected = new TextArea();
-        connected.setLayoutX(470);
-        connected.setLayoutY(50);
-        connected.setPrefHeight(280);
-        connected.setPrefWidth(100);
-        connected.setEditable(false);
         
         // Zone de saisie de texte
         textToSend = new TextArea();
@@ -132,13 +121,37 @@ public class ClientPanel extends Parent {
             // e.getSource().getScene().stage.close();
         });
         
-        this.getChildren().add(connected);
-        this.getChildren().add(textMembers);
+        // Bouton grelotte ça picotte
+        grelotteBtn = new Button();
+        grelotteBtn.setLayoutX(50);
+        grelotteBtn.setLayoutY(465);
+        grelotteBtn.setPrefHeight(25);
+        grelotteBtn.setPrefWidth(250);
+        grelotteBtn.setText("Grelotte ça picotte !");
+        grelotteBtn.setVisible(true);
+        grelotteBtn.setOnAction( e ->{
+            // e.getSource().getScene().stage.close();
+        });
+        
+        // Bouton pas mou le caillou
+        caillouBtn = new Button();
+        caillouBtn.setLayoutX(320);
+        caillouBtn.setLayoutY(465);
+        caillouBtn.setPrefHeight(25);
+        caillouBtn.setPrefWidth(250);
+        caillouBtn.setText("Pas mou le caillou !");
+        caillouBtn.setVisible(true);
+        caillouBtn.setOnAction( e ->{
+            // e.getSource().getScene().stage.close();
+        });
+        
         this.getChildren().add(scrollReceivedText);
         this.getChildren().add(textToSend);        
         this.getChildren().add(sendBtn);
         this.getChildren().add(clearBtn);
         this.getChildren().add(disconnectBtn);
+        this.getChildren().add(grelotteBtn);
+        this.getChildren().add(caillouBtn);
     }
     
     

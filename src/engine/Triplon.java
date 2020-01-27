@@ -137,7 +137,7 @@ public class Triplon {
 
     @Override
     public String toString() {
-        return "Triplon{" + "des=" + des + ", points=" + points + ", type=" + type + '}';
+        return "lance les dés : " + des + ". "+ type + " (" + points + ")";
     }
     
     public static List<Integer> lancer(){

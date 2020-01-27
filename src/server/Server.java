@@ -7,6 +7,7 @@ package server;
 import client.ConnectedClient;
 import common.Connection;
 import common.Message;
+import engine.Triplon;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,11 +40,22 @@ public class Server {
     
     public void broadcastMessage(Message mess, int id) throws IOException
     {
-        for(ConnectedClient client : clients)
-        {
-            if(client.getId() != id)
+        System.out.println(mess.getContent());
+        if("lancerdedes".equals(mess.getContent())){
+            Triplon t = new Triplon();
+            t.process();
+            Message mess1 = new Message("server", t.toString());
+            for(ConnectedClient client : clients)
             {
-                client.sendMessage(mess);
+                    client.sendMessage(mess1);
+            }
+        } else {
+            for(ConnectedClient client : clients)
+            {
+                if(client.getId() != id)
+                {
+                    client.sendMessage(mess);
+                }
             }
         }
     }
