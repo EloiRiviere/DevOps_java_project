@@ -39,7 +39,7 @@ public class Demarrage extends Application {
         
         ClientPanel clientPanel = new ClientPanel();
         
-        Client client = MainClient.customInit("localhost", 25555, clientPanel);
+        Client client = MainClient.customInit("localhost", 25555, clientPanel, "test");
         clientPanel.setClient(client);
         Group root = new Group();
         root.getChildren().add(clientPanel);

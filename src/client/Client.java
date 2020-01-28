@@ -19,6 +19,7 @@ public class Client
     private final String address;
     private final int port;
     private final Socket socket;
+    private final String name;
     private ObjectInputStream in;
     private final ObjectOutputStream out;
     private Thread clientSend;
@@ -28,7 +29,7 @@ public class Client
         new application.Demarrage();
     }
     
-    public Client(String address, int port, ClientPanel cp) throws IOException
+    public Client(String address, int port, ClientPanel cp, String name) throws IOException
     {
         this.address = address;
         this.port = port;
@@ -38,7 +39,7 @@ public class Client
         clientSend.start();
         Thread clientReceive = new ClientReceive(this, socket, cp);
         clientReceive.start();
-        
+        this.name = name;
     }
 
     public void send(Message mess) throws IOException{

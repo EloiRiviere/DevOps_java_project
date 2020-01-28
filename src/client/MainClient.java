@@ -28,10 +28,10 @@ public class MainClient {
         }
     }*/
     
-    public static Client customInit(String add, int p, ClientPanel cp) throws IOException{
+    public static Client customInit(String add, int p, ClientPanel cp, String name) throws IOException{
         String address = add;
         int port = p;
-        Client c = new Client(address, port, cp);
+        Client c = new Client(address, port, cp, name);
         return c;
     }
     
