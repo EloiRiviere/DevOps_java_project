@@ -30,6 +30,7 @@ public class ClientPanel extends Parent {
     ScrollPane scrollReceivedText;
     TextFlow receivedText;
     Button sendBtn;
+    Button lancerBtn;
     Button clearBtn;
     Button disconnectBtn;
     Button grelotteBtn;
@@ -60,23 +61,41 @@ public class ClientPanel extends Parent {
         
         scrollReceivedText.setLayoutX(50);
         scrollReceivedText.setLayoutY(50);
-        scrollReceivedText.setPrefHeight(280);
-        scrollReceivedText.setPrefWidth(520);
+        scrollReceivedText.setPrefHeight(450);
+        scrollReceivedText.setPrefWidth(1100);
         
         scrollReceivedText.setContent(receivedText);
         scrollReceivedText.vvalueProperty().bind(receivedText.heightProperty());
+                
+        // Bouton lancer de dés
+        lancerBtn = new Button();
+        lancerBtn.setLayoutX(500);
+        lancerBtn.setLayoutY(525);
+        lancerBtn.setPrefHeight(25);
+        lancerBtn.setPrefWidth(200);
+        lancerBtn.setText("Lancer les dés !");
+        lancerBtn.setVisible(true);
+        lancerBtn.setOnAction( e ->{
+            Message mess = new Message(this.client.toString(), "lancerdedes");
+            try {
+                this.messageSended(mess);
+                textToSend.clear();
+            } catch (IOException ex) {
+                Logger.getLogger(ClientPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
         
         // Zone de saisie de texte
         textToSend = new TextArea();
         textToSend.setLayoutX(50);
-        textToSend.setLayoutY(350);
-        textToSend.setPrefHeight(100);
-        textToSend.setPrefWidth(400);
+        textToSend.setLayoutY(575);
+        textToSend.setPrefHeight(130);
+        textToSend.setPrefWidth(950);
         
         // Bouton d'envoi de message
         sendBtn = new Button();
-        sendBtn.setLayoutX(470);
-        sendBtn.setLayoutY(350);
+        sendBtn.setLayoutX(1050);
+        sendBtn.setLayoutY(575);
         sendBtn.setPrefHeight(25);
         sendBtn.setPrefWidth(100);
         sendBtn.setText("Envoyer");
@@ -98,8 +117,8 @@ public class ClientPanel extends Parent {
         
         // Bouton d'effacement de zone de saisie
         clearBtn = new Button();
-        clearBtn.setLayoutX(470);
-        clearBtn.setLayoutY(385);
+        clearBtn.setLayoutX(1050);
+        clearBtn.setLayoutY(625);
         clearBtn.setPrefHeight(25);
         clearBtn.setPrefWidth(100);
         clearBtn.setText("Effacer");
@@ -111,8 +130,8 @@ public class ClientPanel extends Parent {
         
         // Bouton de déconnexion
         disconnectBtn = new Button();
-        disconnectBtn.setLayoutX(470);
-        disconnectBtn.setLayoutY(420);
+        disconnectBtn.setLayoutX(1050);
+        disconnectBtn.setLayoutY(675);
         disconnectBtn.setPrefHeight(25);
         disconnectBtn.setPrefWidth(100);
         disconnectBtn.setText("Quitter");
@@ -123,8 +142,8 @@ public class ClientPanel extends Parent {
         
         // Bouton grelotte ça picotte
         grelotteBtn = new Button();
-        grelotteBtn.setLayoutX(50);
-        grelotteBtn.setLayoutY(465);
+        grelotteBtn.setLayoutX(350);
+        grelotteBtn.setLayoutY(725);
         grelotteBtn.setPrefHeight(25);
         grelotteBtn.setPrefWidth(250);
         grelotteBtn.setText("Grelotte ça picotte !");
@@ -135,8 +154,8 @@ public class ClientPanel extends Parent {
         
         // Bouton pas mou le caillou
         caillouBtn = new Button();
-        caillouBtn.setLayoutX(320);
-        caillouBtn.setLayoutY(465);
+        caillouBtn.setLayoutX(625);
+        caillouBtn.setLayoutY(725);
         caillouBtn.setPrefHeight(25);
         caillouBtn.setPrefWidth(250);
         caillouBtn.setText("Pas mou le caillou !");
@@ -147,7 +166,8 @@ public class ClientPanel extends Parent {
         
         this.getChildren().add(scrollReceivedText);
         this.getChildren().add(textToSend);        
-        this.getChildren().add(sendBtn);
+        this.getChildren().add(sendBtn);        
+        this.getChildren().add(lancerBtn);
         this.getChildren().add(clearBtn);
         this.getChildren().add(disconnectBtn);
         this.getChildren().add(grelotteBtn);

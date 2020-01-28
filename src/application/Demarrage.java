@@ -43,7 +43,7 @@ public class Demarrage extends Application {
         clientPanel.setClient(client);
         Group root = new Group();
         root.getChildren().add(clientPanel);
-        Scene scene = new Scene(root, 600, 500);
+        Scene scene = new Scene(root, 1200, 800);
         scene.setFill(Color.BLACK);
         stage.setResizable(false);
         stage.setTitle("Application Réseau - Interface");

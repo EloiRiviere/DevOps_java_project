@@ -127,12 +127,15 @@ public class Triplon {
                 this.setType("Suite");
                 return true;
             }
+            
+            //Si il n'y a aucune combinaison
+            this.setType("Néant");
+            return true;
 
         } else {
             System.out.println("Il n'y a le bon nombre de lancer");
             return false;
         }
-        return false;
     }
 
     @Override
