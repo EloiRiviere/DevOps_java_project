@@ -81,8 +81,6 @@ public class Server {
                 }else{
                     this.pj2 -= 5;
                 }
-                this.specialMoveName="";
-                this.specialMoveValue=0;
                 Message mess3 = new Message(mess.getSender(), "Bévue ! Tu perds 5 points");
                 Message mess2 = new Message("Score", this.pj1 + " - " + this.pj2);
                 for(ConnectedClient client : clients)
@@ -106,6 +104,8 @@ public class Server {
                 }else{
                     this.pj2 += this.specialMoveValue;
                 }
+                this.specialMoveName="";
+                this.specialMoveValue=0;
                 Message mess2 = new Message("Score", this.pj1 + " - " + this.pj2);
                 for(ConnectedClient client : clients)
                 {
