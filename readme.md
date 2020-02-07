@@ -20,6 +20,8 @@ Cas effectifs  :
     
     :V: Suite
     
+    :V: Bévue
+    
     :X: Sirotage
     
     :X: Civet
@@ -29,8 +31,6 @@ Cas effectifs  :
     :X: Néant
     
     :X: Grelottine
-    
-    :X: Bévue
     
     :X: Doublette
     
