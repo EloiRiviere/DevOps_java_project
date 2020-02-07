@@ -15,10 +15,17 @@ import javafx.scene.text.TextFlow;
 import common.Message;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Platform;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 /**
  * @author Eloi Rivière p1925581
  * @version 1.0
@@ -48,7 +55,6 @@ public class ClientPanel extends Parent {
         this.client = client;
     }
     
-    
     public ClientPanel()
     {
         // Zone des messages reçus
@@ -76,6 +82,11 @@ public class ClientPanel extends Parent {
         lancerBtn.setText("Lancer les dés !");
         lancerBtn.setVisible(true);
         lancerBtn.setOnAction( e ->{
+            try {
+                playSound("assets/dice.wav");
+            } catch (UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
+                Logger.getLogger(ClientPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
             Message mess = new Message(this.client.toString(), "lancerdedes");
             try {
                 this.messageSended(mess);
@@ -105,7 +116,7 @@ public class ClientPanel extends Parent {
             if(textToSend.getText().length()>0){
                 receivedText.getChildren().add(new Label("Moi : " + textToSend.getText()));
                 receivedText.getChildren().add(new Text(System.lineSeparator()));
-                Message mess = new Message("test", textToSend.getText());
+                Message mess = new Message(this.client.toString(), textToSend.getText());
                 try {
                     this.messageSended(mess);
                     textToSend.clear();
@@ -149,7 +160,19 @@ public class ClientPanel extends Parent {
         grelotteBtn.setText("Grelotte ça picotte !");
         grelotteBtn.setVisible(true);
         grelotteBtn.setOnAction( e ->{
-            // e.getSource().getScene().stage.close();
+            try {
+                playSound("assets/grelotte.wav");
+            } catch (UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
+                Logger.getLogger(ClientPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            Message mess = new Message(this.client.toString(), "Grelotte ça picotte !");
+            try {
+                this.messageSended(mess);
+                receivedText.getChildren().add(new Label("Moi : Grelotte ça picotte !"));
+                receivedText.getChildren().add(new Text(System.lineSeparator()));
+            } catch (IOException ex) {
+                Logger.getLogger(ClientPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
         
         // Bouton pas mou le caillou
@@ -161,7 +184,14 @@ public class ClientPanel extends Parent {
         caillouBtn.setText("Pas mou le caillou !");
         caillouBtn.setVisible(true);
         caillouBtn.setOnAction( e ->{
-            // e.getSource().getScene().stage.close();
+            Message mess = new Message(this.client.toString(), "Pas mou le caillou !");
+            try {
+                this.messageSended(mess);
+                receivedText.getChildren().add(new Label("Moi : Pas mou le caillou !"));
+                receivedText.getChildren().add(new Text(System.lineSeparator()));
+            } catch (IOException ex) {
+                Logger.getLogger(ClientPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
         
         this.getChildren().add(scrollReceivedText);
@@ -189,6 +219,14 @@ public class ClientPanel extends Parent {
     
     public void messageSended(Message mess) throws IOException {
         this.client.send(mess);
+    }
+    
+    public void playSound(String soundFile) throws MalformedURLException, UnsupportedAudioFileException, IOException, LineUnavailableException {
+       File f = new File("./" + soundFile);
+        AudioInputStream audioIn = AudioSystem.getAudioInputStream(f.toURI().toURL());  
+        Clip clip = AudioSystem.getClip();
+        clip.open(audioIn);
+        clip.start();
     }
     
 }
