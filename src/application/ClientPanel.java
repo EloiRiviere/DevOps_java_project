@@ -13,8 +13,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import common.Message;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -147,8 +146,14 @@ public class ClientPanel extends Parent {
         disconnectBtn.setPrefWidth(100);
         disconnectBtn.setText("Quitter");
         disconnectBtn.setVisible(true);
-        disconnectBtn.setOnAction( e ->{
-            // e.getSource().getScene().stage.close();
+        disconnectBtn.setOnAction((ActionEvent event) -> {
+            Message mess = new Message(this.client.toString(), "deconnexionclient");
+            try {
+                this.messageSended(mess);
+                System.exit(0);
+            } catch (IOException ex) {
+                Logger.getLogger(ClientPanel.class.getName()).log(Level.SEVERE, null, ex);
+            } 
         });
         
         // Bouton grelotte ça picotte
@@ -210,7 +215,6 @@ public class ClientPanel extends Parent {
         Platform.runLater(new Runnable(){
             @Override
             public void run() {
-                System.out.println(mess.getSender());
                 receivedText.getChildren().add(new Label(mess.toString()));
                 receivedText.getChildren().add(new Text(System.lineSeparator()));
             }

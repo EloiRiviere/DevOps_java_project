@@ -60,9 +60,8 @@ public class ConnectedClient implements Runnable
             {
                 // attente de réception de message
                 Message mess = (Message) in.readObject();
-                if(Objects.isNull(mess) || mess.getContent().equals("Bye."))
+                if(mess.getContent().equals("deconnexionclient"))
                 {
-                    // le client s'est déconnecté si le message est null
                     server.disconnectedClient(this);
                     isActive = false;
                 }
