@@ -10,7 +10,7 @@ import java.io.IOException;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.paint.Color;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 
@@ -38,10 +38,8 @@ public class Demarrage extends Application {
         Group root = new Group();
         root.getChildren().add(this.clientPanel);
         Scene scene = new Scene(root, 1200, 800);
-        scene.setFill(Color.BLACK);
         stage.setResizable(false);
-        stage.setTitle("Application Réseau - Interface");
-        scene.getStylesheets().addAll(this.getClass().getResource("style.css").toExternalForm());        
+        stage.setTitle("Cul de chouette");
         stage.setScene(scene);
         stage.show();
     }
