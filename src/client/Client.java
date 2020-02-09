@@ -23,11 +23,6 @@ public class Client
     private final ObjectOutputStream out;
     private Thread clientSend;
     
-    public static void main(String[] args)
-    {
-        new application.Demarrage();
-    }
-    
     public Client(String address, int port, ClientPanel cp, String name) throws IOException
     {
         this.address = address;
