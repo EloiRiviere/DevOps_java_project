@@ -4,11 +4,14 @@
  */
 package server;
 
+import bdd.Base;
 import client.ConnectedClient;
 import common.Connection;
 import common.Message;
 import engine.Triplon;
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,7 +51,7 @@ public class Server {
         this.clients.add(newClient);
     }
     
-    public void broadcastMessage(Message mess, int id) throws IOException
+    public void broadcastMessage(Message mess, int id) throws IOException, SQLException
     {
         if("Pas mou le caillou !".equals(mess.getContent())){
             Message mess1 = new Message(mess.getSender(), "Pas mou le caillou !");
@@ -159,6 +162,10 @@ public class Server {
                             client.sendMessage(mess2);
                             if(this.pj1>=343 || this.pj2>=343){
                                 client.sendMessage(new Message("Serveur", "Partie terminée !!!"));
+                                int postNewScore = Base.postNewScore(this.pj1, this.pj2);
+                                if(postNewScore==0){
+                                    client.sendMessage(new Message("Serveur", "Une erreur est survenue lors de l'enregistrement de la partie"));
+                                }
                             }
                         }
                     }

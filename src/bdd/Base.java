@@ -16,9 +16,10 @@ import java.sql.Statement;
  *
  * @author Rivière Eloi
  */
-public class Base {
-    public static void main(String args[])
-    {
+public class Base {    
+    public static int postNewScore(int scorej1, int scorej2){
+        int result = 0;
+        
         String classname = "oracle.jdbc.driver.OracleDriver";
         Exception e = new Exception();
         try
@@ -27,24 +28,17 @@ public class Base {
             String url = "jdbc:oracle:thin:@iutdoua-oracle.univ-lyon1.fr:1521:orcl";
             
             // Connexion
-            Connection connection = DriverManager.getConnection(url,"p1925581","477879"); 
+            Connection connection = DriverManager.getConnection(url,"p1602081","266644"); 
             
             // Objet gérant les requêtes
             Statement statement = connection.createStatement();
             
-            String requete = "select * from proprietaire";
-            System.out.println(requete);
+            String requete = "insert into culdechouette values(sysdate," + scorej1 + ", " + scorej2 + ")";
             
-            ResultSet result = statement.executeQuery(requete);
+            result = statement.executeUpdate(requete);
+            connection.commit();
             
-            System.out.println("Numéro | Nom propriétaire | Prénom propriétaire");
-            
-            while(result.next())
-            {
-                System.out.println(result.getInt(1) + " | " + result.getString("nomproprio") + " | " + result.getString("prenomproprio"));
-            }
-            
-            statement.close();
+            statement.close();           
             
         }
         catch(ClassNotFoundException cnfe)
@@ -61,10 +55,7 @@ public class Base {
         {
             System.err.println("Erreur inconnue");
         }
-        finally
-        {
-            e.printStackTrace();
-        }
-        
+      
+        return result;
     }
 }
