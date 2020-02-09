@@ -5,7 +5,6 @@ package application;
 
 import client.Client;
 import client.MainClient;
-import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
 import common.Message;
 import java.io.IOException;
 import javafx.application.Application;

@@ -2,7 +2,6 @@
 package client;
 
 import application.ClientPanel;
-import application.Demarrage;
 import common.Message;
 import java.io.IOException;
 import java.io.ObjectInputStream;

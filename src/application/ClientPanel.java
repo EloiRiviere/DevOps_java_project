@@ -13,7 +13,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import common.Message;
-import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;

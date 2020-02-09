@@ -177,7 +177,6 @@ public class Server {
     
     public void disconnectedClient(ConnectedClient discClient) throws IOException
     {
-        discClient.closeClient();
         clients.remove(discClient);
         for(ConnectedClient client : clients)
         {
