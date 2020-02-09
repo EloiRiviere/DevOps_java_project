@@ -8,26 +8,6 @@ import java.io.IOException;
  **/
 
 public class MainClient {
-    /**
-     * construct a new client
-     * @param args
-     * @throws java.io.IOException
-     * @paramargs
-     */
-    
-    /*public static void main(String[] args) throws IOException {
-        if (args.length != 2)
-        {
-            printUsage();
-        } 
-        else
-        {
-            String address = args[0];
-            Integer port = new Integer(args[1]);
-            Client c = new Client(address, port);
-        }
-    }*/
-    
     public static Client customInit(String add, int p, ClientPanel cp, String name) throws IOException{
         String address = add;
         int port = p;

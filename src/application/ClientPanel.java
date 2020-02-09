@@ -211,12 +211,9 @@ public class ClientPanel extends Parent {
     
     public void messageReceived(Message mess) {
         
-        Platform.runLater(new Runnable(){
-            @Override
-            public void run() {
-                receivedText.getChildren().add(new Label(mess.toString()));
-                receivedText.getChildren().add(new Text(System.lineSeparator()));
-            }
+        Platform.runLater(() -> {
+            receivedText.getChildren().add(new Label(mess.toString()));
+            receivedText.getChildren().add(new Text(System.lineSeparator()));
         });
     }    
     

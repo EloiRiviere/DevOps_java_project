@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import server.Server;
@@ -75,6 +76,8 @@ public class ConnectedClient implements Runnable
         catch(IOException | ClassNotFoundException ex)
         {
             System.out.println("Test fermeture");
+            Logger.getLogger(ConnectedClient.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
             Logger.getLogger(ConnectedClient.class.getName()).log(Level.SEVERE, null, ex);
         }
         

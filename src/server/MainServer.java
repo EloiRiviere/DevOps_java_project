@@ -11,6 +11,7 @@ public class MainServer {
     /**
      * creates a new server
      * @param args
+     * @throws java.io.IOException
      */
     public static void main(String[] args) throws IOException {
 

@@ -10,7 +10,6 @@ import common.Connection;
 import common.Message;
 import engine.Triplon;
 import java.io.IOException;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +45,7 @@ public class Server {
     {
         for(ConnectedClient client : clients)
         {
-            client.sendMessage(new Message("server","Le client " + newClient.getId() + " vient de se connecter."));
+            client.sendMessage(new Message("Serveur","Le client " + newClient.getId() + " vient de se connecter."));
         }
         this.clients.add(newClient);
     }
@@ -187,7 +186,7 @@ public class Server {
         clients.remove(discClient);
         for(ConnectedClient client : clients)
         {
-            client.sendMessage(new Message("server","Le client " + discClient.getId() + " s'est déconnecté."));
+            client.sendMessage(new Message("Serveur","Le client " + discClient.getId() + " s'est déconnecté."));
         }
     }
     
