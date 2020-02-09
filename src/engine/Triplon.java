@@ -125,6 +125,7 @@ public class Triplon {
             //On vérifie si c'est une suite
             if (Objects.equals(this.des.get(0), this.des.get(1) - 1) && Objects.equals(this.des.get(1), this.des.get(2) - 1)) {
                 this.setType("Suite");
+                this.setPoints(10);
                 return true;
             }
             
